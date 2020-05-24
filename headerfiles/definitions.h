@@ -17,7 +17,7 @@
 #define DEBUG 0 // 1: print extra info when running, 0: don't print info
 #define MAXN 30 // max array size
 #define NAMESIZE 32 // max length of process names
-#define FAKE_DMESG 1 // 1: print desired dmesg output (not part of syscall), 0: run program as normal
+#define FAKE_DMESG 0 // 1: print desired dmesg output (not part of syscall), 0: run program as normal
 
 enum policy_type {FIFO, RR, SJF, PSJF};
 enum jobstatus {UNAVAILABLE, READY, RUNNING, PAUSED, FINISHED};
