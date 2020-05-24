@@ -38,8 +38,9 @@ int main() {
     global_steps = (int*)mmap(NULL, sizeof *global_steps, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
     *global_steps = 0;
 
-
-// Get policy
+    // -----------------------
+    // Get policy
+    // -----------------------
     policy = get_policy();
 
     int N;
@@ -47,7 +48,9 @@ int main() {
     scanf("%u", &N);
 
 
-// Input and Init
+    // -----------------------
+    // Obtain Input
+    // -----------------------
     job jobs[MAXN];
 
     // N R T
@@ -70,10 +73,9 @@ int main() {
         }
     }
 
-// Sort Ready Times (Optional)
-
-// Params
-
+    // -----------------------
+    // Initialize Parameters
+    // -----------------------
     int jobs_complete = 0;
     int step = 0; // current time step
     bool running; // indicates if previous process is running
@@ -90,13 +92,17 @@ int main() {
         }
     }
 
-// Initiate loop
+    // -----------------------
+    // Initiate loop
+    // -----------------------
     while (jobs_complete < N) {
         if (DEBUG) printf("----------\nSTEP: %d (main: %d)\n", *global_steps, step);
 
 
 
-    // Add Ready Jobs
+        // -----------------------
+        // Add Ready Jobs
+        // -----------------------
         for (int i = 0; i < N; i++){
             if ((jobs[i].status == UNAVAILABLE) && (jobs[i].ready_time <= *global_steps)) {
                 jobs[i].status = READY;
@@ -104,14 +110,15 @@ int main() {
             }
         }
 
-    // Select Job
+        // -----------------------
+        // Select Job
+        // -----------------------
         id = select_job(policy, jobs, running, id, *global_steps);
         if (DEBUG && (id > 0)) printf("select job -- %s\n", jobs[id].name);
         
         if (id < 0) {
             // No job selected
             if (DEBUG) printf("no job\n");
-            // delay(1);
             half_time_unit();
             step += 1;
             *global_steps += 1;
@@ -120,10 +127,12 @@ int main() {
             continue;
         }
         else {
-        // Run Job
+            // -----------------------
+            // Run Job
+            // -----------------------
             if ((running) && (id != id_prev)) {
                 if (DEBUG) printf("pausing %s\n", jobs[id_prev].name);
-                pause_job(jobs, id);
+                pause_job(jobs, id_prev);
             }
             jobs_complete += run_job(jobs, id);
             running = true;
@@ -131,17 +140,18 @@ int main() {
 
             if (DEBUG) printf("run job -- %s (%d) \n", jobs[id].name, jobs[id].PID);
 
-        // Update Params
-            // if (DEBUG) printf("update\n");
-            // delay(1);
+            // -----------------------
+            // Update Status
+            // -----------------------
             half_time_unit();
-            // for (int i = 0; i < 5; i++) time_unit(); // time_unit is shorter here
-            // for (int i = 0; i < 2; i++) time_unit();
             step += 1;
 
             jobs_complete += update_status(jobs, N);
             if (jobs[id].status == FINISHED) running = false;
 
+            // -----------------------
+            // Debug Info
+            // -----------------------
             if (DEBUG) {
                 printf("running %d\n", running);
 
@@ -174,6 +184,13 @@ int main() {
             }
 
         }
-        if (DEBUG && (step > 60)) break; // use shorter loops when debugging
+        if (DEBUG && (step > 200)) break; // use shorter loops when debugging
+    }
+
+    // ------------------
+    // Output
+    // ------------------
+    for (int i = 0; i < N; i++) {
+        printf("%s %d\n", jobs[i].name, jobs[i].PID);
     }
 }

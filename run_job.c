@@ -8,7 +8,7 @@ long double get_time(){
     // gets the clock time in nanoseconds (from time.h)
     struct timespec t;
     clock_gettime(CLOCK_REALTIME, &t);
-    return (t.tv_sec + t.tv_nsec);
+    return (t.tv_sec*10E9 + t.tv_nsec);
 }
 
 void time_unit(){
@@ -21,7 +21,7 @@ int run_job(job jobs[MAXN], int id) {
         int PID = fork();
         if (PID == 0) {
             int PID = getpid();
-            long double start_time = get_time() * 10E-7;
+            long double start_time = get_time() * 10E-9;
 
             
             
@@ -34,9 +34,9 @@ int run_job(job jobs[MAXN], int id) {
             }
             #endif
 
-            long double stop_time = get_time() * 10E-7;
+            long double stop_time = get_time() * 10E-9;
 
-            if (DEBUG) printf("process %d -- start: %Lf -- stop: %Lf -- elapsed: %Lf -- steps: %d\n", \
+            if (DEBUG || FAKE_DMESG) printf("process %d -- start: %Lf -- stop: %Lf -- elapsed: %Lf -- steps: %d\n", \
             PID, start_time, stop_time, stop_time - start_time, jobs[id].exec_time);
 
             exit(EXIT_SUCCESS);
@@ -51,8 +51,8 @@ int run_job(job jobs[MAXN], int id) {
     else if (jobs[id].status == PAUSED) {
     // Continue Job
         if (DEBUG) printf("continue process %d\n", jobs[id].PID);
-        if (USE_KILL) kill(jobs[id].PID, SIGCONT);
         jobs[id].status = RUNNING;
+        kill(jobs[id].PID, SIGCONT);
     }
 
     int waitstatus = 1;
@@ -71,5 +71,5 @@ int run_job(job jobs[MAXN], int id) {
 void pause_job(job jobs[MAXN], int id) {
     if (DEBUG) printf("pausing process %d\n", jobs[id].PID);
     jobs[id].status = PAUSED;
-    if (USE_KILL) kill(jobs[id].PID, SIGSTOP);
+    kill(jobs[id].PID, SIGSTOP);
 }

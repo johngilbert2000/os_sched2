@@ -14,9 +14,6 @@ sched2: get_policy.o run_job.o select_job.o update_status.o main.c
 run:
 	@./sched2
 
-runall:
-	@python runall.py
-
 scratchwork:
 	$(CC) scratchwork.c
 	@./a.out
@@ -28,4 +25,7 @@ clean:
 	@rm *.o
 
 cleanall:
-	@python cleanall.py
+	@rm sched2
+	@rm -r *.dSYM/
+	@rm -r output/*.txt
+	@rm *.o
