@@ -69,7 +69,7 @@ make clean
 
 ### Demo
 
-A demo can be found at this link: ______
+A demo can be found at this link: https://www.youtube.com/watch?v=EnbYvB6WLm8
 
 
 The following commands were used to produce the files in the `output` folder:
