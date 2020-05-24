@@ -119,7 +119,7 @@ int main() {
         if (id < 0) {
             // No job selected
             if (DEBUG) printf("no job\n");
-            half_time_unit();
+            time_unit();
             step += 1;
             *global_steps += 1;
             jobs_complete += update_status(jobs, N);
