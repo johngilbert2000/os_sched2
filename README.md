@@ -21,6 +21,10 @@ More details can be found in *report.pdf*
 
 A demo can be found at this link: https://www.youtube.com/watch?v=ZaO9pVGO7to
 
+*Note*: To ensure the kernel compiled correctly, I recommend temporarily switching `DEBUG` and `SYSDEBUG` to `1` in *headerfiles/definitions.h* to check that the time steps are updating correctly from the processes.
+
+Debug example: https://www.youtube.com/watch?v=Gj3yPg6UDzY
+
 <hr>
 
 ### Compiling the Kernel
