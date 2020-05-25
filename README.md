@@ -1,5 +1,7 @@
 # OS Scheduler
 
+等一下我有找到一個小錯誤，需要重新compile kernel。- 夏明傑 05/25/2020 (13:45)
+
 <hr>
 
 A continuation of my userspace OS Scheduler project, (original version found [here](https://github.com/johngilbert2000/OS_scheduler))
