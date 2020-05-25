@@ -14,7 +14,7 @@ SYSCALL_DEFINE1(dummy_proc, int times, int **global_steps, int DEBUG) //, int ti
 	for (t = 0; t < times; t++) {
 		for (i = 0; i < 1000000UL; i++);
 		**global_steps += 1;
-		if (DEBUG == 1) printk("%d\n", **global_steps)
+		if (DEBUG == 1) printk("%d\n", **global_steps);
 	}
 
 	getnstimeofday(&end_time);
