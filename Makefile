@@ -1,6 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra
-# -g -fsanitize=address 
+CFLAGS= -g -fsanitize=address -Wall -Wextra
 # -Wall -Wuninitialized
 
 all: sched2
