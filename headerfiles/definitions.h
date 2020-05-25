@@ -1,6 +1,8 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,8 +16,8 @@
 #include <sys/mman.h> // for mmap()
 #include <wait.h> // for waitpid
 
-#define _GNU_SOURCE
-#include <sched.h> // to set to one core (sched_setaffinity)
+#include <sched.h> // to set to one core (sched_setaffinity) 
+#include <sys/wait.h>
 
 #define IO 0 // 1: display prompts, 0: no display
 #define DEBUG 1 // 1: print extra info when running, 0: don't print info
