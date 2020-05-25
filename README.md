@@ -1,7 +1,5 @@
 # OS Scheduler
 
-等一下我有找到一個小錯誤 (我忘記更新syscall)，需要重新compile kernel，然後再做新的output。- 夏明傑 05/25/2020 (13:45)
-
 <hr>
 
 A continuation of my userspace OS Scheduler project, (original version found [here](https://github.com/johngilbert2000/OS_scheduler))
@@ -21,7 +19,7 @@ More details can be found in *report.pdf*
 
 ### Demo
 
-A demo can be found at this link: https://www.youtube.com/watch?v=EnbYvB6WLm8
+A demo can be found at this link: https://www.youtube.com/watch?v=ZaO9pVGO7to
 
 <hr>
 
@@ -166,7 +164,7 @@ And output from the command dmesg (`dmesg | grep "Project1"`) might contain:
 
 Here's a a screenshot of commands used to produce the files in the `output` folder:
 
-![IO_screenshot](https://github.com/johngilbert2000/os_sched2/blob/master/demo/screenshot_project1_demo2.png)
+![IO_screenshot](https://github.com/johngilbert2000/os_sched2/blob/master/demo/outputs_img.png)
 
 
 Here's the full list of commands used to produce the files in the `output` folder:
