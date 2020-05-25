@@ -183,7 +183,7 @@ int main() {
             }
 
         }
-        if (DEBUG && (step > 200)) break; // use shorter loops when debugging
+        if (DEBUG && (step > 200000)) break; // use shorter loops when debugging
     }
 
     // ------------------

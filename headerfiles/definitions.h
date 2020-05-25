@@ -15,11 +15,12 @@
 #include <wait.h> // for waitpid
 
 #define IO 0 // 1: display prompts, 0: no display
-#define DEBUG 0 // 1: print extra info when running, 0: don't print info
+#define DEBUG 1 // 1: print extra info when running, 0: don't print info
 #define MAXN 30 // max array size
 #define NAMESIZE 32 // max length of process names
 #define FAKE_DMESG 0 // 1: print desired dmesg output (not part of syscall), 0: run program as normal
 #define LINUX // comment this out if not using linux
+#define SYSDEBUG 0 // 1 to debug syscall
 
 enum policy_type {FIFO, RR, SJF, PSJF};
 enum jobstatus {UNAVAILABLE, READY, RUNNING, PAUSED, FINISHED};

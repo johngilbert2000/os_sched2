@@ -24,7 +24,7 @@ int run_job(job jobs[MAXN], int id) {
             long double start_time = get_time() * 10E-9;
 
             int debug_sys;
-            if (DEBUG) {
+            if (SYSDEBUG) {
                 debug_sys = 1;
             } else {
                 debug_sys = 0;
