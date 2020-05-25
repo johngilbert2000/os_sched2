@@ -3,7 +3,7 @@
 #include <linux/syscalls.h>
 #include <linux/ktime.h>
 
-SYSCALL_DEFINE1(dummy_proc, int times, int *global_steps) //, int times, int *global_steps)
+SYSCALL_DEFINE1(dummy_proc, int times, int **global_steps, int DEBUG) //, int times, int *global_steps)
 {
 	struct timespec start_time, end_time;
 	volatile int t;
@@ -13,7 +13,8 @@ SYSCALL_DEFINE1(dummy_proc, int times, int *global_steps) //, int times, int *gl
 
 	for (t = 0; t < times; t++) {
 		for (i = 0; i < 1000000UL; i++);
-		*global_steps += 1;
+		**global_steps += 1;
+		if (DEBUG == 1) printk("%d\n", **global_steps)
 	}
 
 	getnstimeofday(&end_time);

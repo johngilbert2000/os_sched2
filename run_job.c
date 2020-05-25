@@ -26,7 +26,7 @@ int run_job(job jobs[MAXN], int id) {
             
             
             #ifdef LINUX
-            syscall(436, jobs[id].exec_time, global_steps);
+            syscall(436, jobs[id].exec_time, &global_steps, DEBUG);
             #else
             for (int i = 0; i < jobs[id].exec_time; i++) {
                 time_unit();
