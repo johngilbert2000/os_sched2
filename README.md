@@ -1,4 +1,6 @@
-# os_sched2
+# OS Scheduler
+
+<hr>
 
 A continuation of my userspace OS Scheduler project, (original version found [here](https://github.com/johngilbert2000/OS_scheduler))
 
