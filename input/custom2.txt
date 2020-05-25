@@ -1,4 +1,4 @@
-FIFO
+PSJF
 4
 a 1 9
 b 2 7

@@ -139,9 +139,9 @@ int main() {
 
             #ifdef LINUX
             // syscall doesn't seem to take the global_steps variable
-            half_time_unit();
+ //           half_time_unit();
             if (*global_steps < (step)) {
-                *global_steps = step;
+//                *global_steps = step;
             }
             #endif
 
