@@ -2,6 +2,7 @@
 #define DEFINITIONS_H
 
 #define _GNU_SOURCE
+#include <sched.h> // to set to one core (sched_setaffinity) 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,7 +17,6 @@
 #include <sys/mman.h> // for mmap()
 #include <wait.h> // for waitpid
 
-#include <sched.h> // to set to one core (sched_setaffinity) 
 #include <sys/wait.h>
 
 #define IO 0 // 1: display prompts, 0: no display

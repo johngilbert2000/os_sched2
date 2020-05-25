@@ -1,20 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <stdarg.h>
-#include <time.h>
-#include <unistd.h>
-
-#include <sys/types.h>
-#include <signal.h> // for kill()
-#include <sys/mman.h> // for mmap()
-#include <wait.h> // for waitpid
-
-#include <sched.h> // to set to one core (sched_setaffinity) 
-#include <sys/wait.h>
-
-
 #include "headerfiles/definitions.h"
 #include "headerfiles/get_policy.h"
 #include "headerfiles/select_job.h"
