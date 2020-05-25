@@ -3,7 +3,7 @@
 #include <linux/syscalls.h>
 #include <linux/ktime.h>
 
-SYSCALL_DEFINE3(dummy_proc, int times, int **global_steps, int debug_sys) 
+SYSCALL_DEFINE3(dummy_proc, int, times, int **, global_steps, int, debug_sys) 
 {
 	struct timespec start_time, end_time;
 	volatile int t;
