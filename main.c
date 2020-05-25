@@ -17,19 +17,9 @@
 int *global_steps;
 
 void half_time_unit(){
+    // used so main.c will check processes faster than they run
     volatile unsigned long i; for(i=0;i<500000UL;i++); 
 }
-
-void delay(int t) { 
-    // misc function
-    clock_t start_time = clock(); 
-    int a;
-    t = t * 3700; // 1000000
-    while (clock() < start_time + t) {
-        a = 0;
-    }
-} 
-
 
 
 int main() {
