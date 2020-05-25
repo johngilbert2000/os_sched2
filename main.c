@@ -18,6 +18,7 @@ int *global_steps;
 
 void half_time_unit(){
     // used so main.c will check processes faster than they run
+    // edit: unable to share state with new syscall, so this is not used
     volatile unsigned long i; for(i=0;i<500000UL;i++); 
 }
 
@@ -135,6 +136,12 @@ int main() {
             // -----------------------
             half_time_unit();
             step += 1;
+
+            #ifdef LINUX
+            // syscall doesn't seem to take the global_steps variable
+            // half_time_unit();
+            // *global_steps = step;
+            #endif
 
             jobs_complete += update_status(jobs, N);
             if (jobs[id].status == FINISHED) running = false;
