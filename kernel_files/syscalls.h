@@ -1421,6 +1421,6 @@ long compat_ksys_semtimedop(int semid, struct sembuf __user *tsems,
 			    unsigned int nsops,
 			    const struct old_timespec32 __user *timeout);
 
-asmlinkage int sys_dummy_proc(int times, int **global_steps);
+asmlinkage int sys_dummy_proc(int times, int **global_steps, int DEBUG);
 
 #endif
