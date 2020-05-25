@@ -1,6 +1,6 @@
 # OS Scheduler
 
-等一下我有找到一個小錯誤，需要重新compile kernel。- 夏明傑 05/25/2020 (13:45)
+等一下我有找到一個小錯誤 (我忘記更新syscall)，需要重新compile kernel，然後再做新的output。- 夏明傑 05/25/2020 (13:45)
 
 <hr>
 
