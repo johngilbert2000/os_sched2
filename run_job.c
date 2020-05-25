@@ -23,10 +23,15 @@ int run_job(job jobs[MAXN], int id) {
             int PID = getpid();
             long double start_time = get_time() * 10E-9;
 
-            
+            int debug_sys;
+            if (DEBUG) {
+                debug_sys = 1;
+            } else {
+                debug_sys = 0;
+            }
             
             #ifdef LINUX
-            syscall(436, jobs[id].exec_time, &global_steps, DEBUG);
+            syscall(436, jobs[id].exec_time, &global_steps, debug_sys);
             #else
             for (int i = 0; i < jobs[id].exec_time; i++) {
                 time_unit();
