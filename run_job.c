@@ -23,6 +23,12 @@ int run_job(job jobs[MAXN], int id) {
             int PID = getpid();
             long double start_time = get_time() * 10E-9;
 
+            // Set to one core
+            cpu_set_t single_cpu; // cpu bit mask
+            CPU_ZERO(&single_cpu); // initialize to 0
+            CPU_SET(1, &single_cpu); // set to desired number of cores (1)
+            sched_setaffinity(PID, sizeof(cpu_set_t), &single_cpu); // set process to single core
+
             int debug_sys;
             if (SYSDEBUG) {
                 debug_sys = 1;

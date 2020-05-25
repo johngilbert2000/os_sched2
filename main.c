@@ -29,6 +29,13 @@ int main() {
     global_steps = (int*)mmap(NULL, sizeof *global_steps, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
     *global_steps = 0;
 
+    
+    // Set to one core
+    cpu_set_t single_cpu; // cpu bit mask
+    CPU_ZERO(&single_cpu); // initialize to 0
+    CPU_SET(1, &single_cpu); // set to desired number of cores (1)
+    sched_setaffinity(getpid(), sizeof(cpu_set_t), &single_cpu); // set process to single core
+
     // -----------------------
     // Get policy
     // -----------------------

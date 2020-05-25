@@ -14,6 +14,9 @@
 #include <sys/mman.h> // for mmap()
 #include <wait.h> // for waitpid
 
+#define _GNU_SOURCE
+#include <sched.h> // to set to one core (sched_setaffinity)
+
 #define IO 0 // 1: display prompts, 0: no display
 #define DEBUG 1 // 1: print extra info when running, 0: don't print info
 #define MAXN 30 // max array size
